@@ -52,308 +52,171 @@ if st.sidebar.button("Voltar ao Dashboard"):
 
 
 if st.session_state.show_news:
-    # Tela de notícias
+
     st.title("📰 Notícias")
-    st.markdown("""
-    <style>
-    .main {
-        background-color: #f5f6fa;
+
+    st.header("Trabalho doméstico e cuidados no Brasil")
+
+    st.write("""
+    Uma análise da desigualdade na divisão das tarefas domésticas
+    entre homens e mulheres e das diferenças entre grupos raciais
+    no Brasil e nos estados do Amazonas, Bahia, Pernambuco e Ceará.
+    """)
+
+    st.caption("Fonte principal: IBGE — PNAD Contínua")
+
+    st.divider()
+
+    # 1. Divisão do trabalho doméstico
+    st.subheader("1. A divisão do trabalho doméstico")
+
+    st.image(
+        "https://images.unsplash.com/photo-1556911220-e15b29be8c8f",
+        caption="Pessoa realizando tarefas domésticas"
+    )
+
+    st.write("""
+    O trabalho doméstico e os cuidados com pessoas fazem parte
+    da rotina de milhões de brasileiros. Entretanto, essas
+    responsabilidades não são divididas igualmente.
+
+    Historicamente, as mulheres dedicam mais tempo a essas
+    atividades do que os homens.
+    """)
+
+    st.divider()
+
+    # 2. Brasil: homens x mulheres
+    st.subheader("2. Brasil: homens x mulheres")
+
+    st.caption("Média de horas semanais — 2022")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.metric(
+            label="Mulheres",
+            value="21,3 horas"
+        )
+
+    with col2:
+        st.metric(
+            label="Homens",
+            value="11,7 horas"
+        )
+
+    st.write("""
+    As mulheres dedicam aproximadamente 9,6 horas a mais
+    por semana aos afazeres domésticos e cuidados.
+    """)
+
+    st.divider()
+
+    # 3. Comparação entre estados
+    st.subheader("3. Comparação entre os estados")
+
+    st.image(
+        "https://images.unsplash.com/photo-1581578731548-c64695cc6952",
+        caption="Atividades domésticas"
+    )
+
+    st.caption(
+        "Média semanal de horas dedicadas às atividades domésticas e cuidados."
+    )
+
+    dados_estados = {
+        "Estado": [
+            "Amazonas",
+            "Bahia",
+            "Pernambuco",
+            "Ceará"
+        ],
+        "Homens": [
+            "12,2 h",
+            "10,6 h",
+            "12,3 h",
+            "12,2 h"
+        ],
+        "Mulheres": [
+            "18,8 h",
+            "22,6 h",
+            "23,4 h",
+            "23,0 h"
+        ]
     }
 
+    st.table(dados_estados)
 
-    .dashboard {
-        font-family: Arial, sans-serif;
-        color: #263238;
+    st.divider()
+
+    # 4. Desigualdade racial
+    st.subheader("4. Desigualdade racial")
+
+    st.image(
+        "https://images.unsplash.com/photo-1521737711867-e3b97375f902",
+        caption="Grupo de pessoas"
+    )
+
+    st.write("""
+    A desigualdade também aparece quando observamos a divisão
+    das tarefas por raça e cor.
+
+    Mulheres pretas e pardas apresentam uma carga maior
+    de trabalho doméstico e cuidados em comparação às mulheres brancas.
+    """)
+
+    st.markdown("### Horas semanais por grupo — Brasil")
+
+    dados_raciais = {
+        "Grupo": [
+            "Homens brancos",
+            "Homens pretos e pardos",
+            "Mulheres brancas",
+            "Mulheres pretas e pardas"
+        ],
+        "Horas": [
+            "9,5 h",
+            "9,4 h",
+            "18,6 h",
+            "20,4 h"
+        ]
     }
 
+    st.table(dados_raciais)
 
-    .hero {
-        background: linear-gradient(120deg, #263c5a, #477b91);
-        padding: 35px;
-        border-radius: 18px;
-        color: white;
-        margin-bottom: 25px;
-    }
+    st.divider()
 
+    # 5. Principais conclusões
+    st.subheader("5. Principais conclusões")
 
-    .hero h1 {
-        font-size: 32px;
-        margin-bottom: 10px;
-    }
+    st.write("""
+    - Mulheres dedicam mais horas ao trabalho doméstico do que os homens.
+    - A desigualdade está presente nos quatro estados analisados.
+    - Mulheres pretas e pardas enfrentam uma carga maior de trabalho doméstico.
+    - A divisão desigual demonstra a permanência das diferenças sociais e de gênero no Brasil.
+    """)
 
+    st.divider()
 
-    .hero p {
-        font-size: 16px;
-        line-height: 1.6;
-    }
+    # 6. Conclusão
+    st.subheader("6. Conclusão")
 
+    st.write("""
+    Os dados mostram que o trabalho doméstico ainda é distribuído
+    de maneira desigual na sociedade brasileira.
 
-    .card {
-        background: white;
-        padding: 22px;
-        border-radius: 15px;
-        margin: 15px 0;
-        box-shadow: 0 3px 12px rgba(0,0,0,0.06);
-    }
+    As mulheres, especialmente as pretas e pardas, dedicam mais tempo
+    aos cuidados e afazeres domésticos.
 
+    Por isso, é importante promover uma divisão mais justa dessas
+    responsabilidades, valorizando o trabalho realizado dentro de casa.
+    """)
 
-    .metric {
-        font-size: 28px;
-        font-weight: bold;
-        color: #315c79;
-    }
+    st.divider()
 
-
-    .subtitle {
-        color: #64748b;
-        font-size: 14px;
-    }
-
-
-    .bar-bg {
-        background: #e9edf2;
-        height: 13px;
-        border-radius: 10px;
-        overflow: hidden;
-        margin: 8px 0 15px;
-    }
-
-
-    .bar {
-        height: 13px;
-        border-radius: 10px;
-        background: #477b91;
-    }
-
-
-    img {
-        width: 100%;
-        border-radius: 12px;
-        object-fit: cover;
-    }
-
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 15px;
-    }
-
-
-    th {
-        background: #315c79;
-        color: white;
-        padding: 12px;
-    }
-
-
-    td {
-        padding: 12px;
-        border-bottom: 1px solid #e5e7eb;
-        text-align: center;
-    }
-
-
-    .footer {
-        text-align: center;
-        color: #64748b;
-        font-size: 13px;
-        padding: 20px;
-    }
-    </style>
-
-
-    <div class="dashboard">
-
-
-    <div class="hero">
-        <h1>Trabalho doméstico e cuidados no Brasil</h1>
-        <p>
-        Uma análise da desigualdade na divisão das tarefas domésticas
-        entre homens e mulheres e das diferenças entre grupos raciais
-        no Brasil e nos estados do Amazonas, Bahia, Pernambuco e Ceará.
-        </p>
-        <p><b>Fonte principal:</b> IBGE — PNAD Contínua</p>
-    </div>
-
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f"
-        alt="Pessoa realizando tarefas domésticas">
-
-
-        <h2>1. A divisão do trabalho doméstico</h2>
-
-
-        <p>
-        O trabalho doméstico e os cuidados com pessoas fazem parte
-        da rotina de milhões de brasileiros. Entretanto, essas
-        responsabilidades não são divididas igualmente.
-        Historicamente, as mulheres dedicam mais tempo a essas
-        atividades do que os homens.
-        </p>
-    </div>
-
-
-    <h2>2. Brasil: homens x mulheres</h2>
-
-
-    <div class="card">
-        <p class="subtitle">Média de horas semanais — 2022</p>
-
-
-        <p>Mulheres</p>
-        <div class="metric">21,3 horas</div>
-        <div class="bar-bg">
-            <div class="bar" style="width:100%"></div>
-        </div>
-
-
-        <p>Homens</p>
-        <div class="metric">11,7 horas</div>
-        <div class="bar-bg">
-            <div class="bar" style="width:55%"></div>
-        </div>
-
-
-        <p>
-        As mulheres dedicam aproximadamente 9,6 horas a mais
-        por semana aos afazeres domésticos e cuidados.
-        </p>
-    </div>
-
-
-    <h2>3. Comparação entre os estados</h2>
-
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952"
-        alt="Atividades domésticas">
-
-
-        <p class="subtitle">
-        Média semanal de horas dedicadas às atividades domésticas e cuidados.
-        </p>
-
-
-        <table>
-            <tr>
-                <th>Estado</th>
-                <th>Homens</th>
-                <th>Mulheres</th>
-            </tr>
-            <tr>
-                <td>Amazonas</td>
-                <td>12,2 h</td>
-                <td>18,8 h</td>
-            </tr>
-            <tr>
-                <td>Bahia</td>
-                <td>10,6 h</td>
-                <td>22,6 h</td>
-            </tr>
-            <tr>
-                <td>Pernambuco</td>
-                <td>12,3 h</td>
-                <td>23,4 h</td>
-            </tr>
-            <tr>
-                <td>Ceará</td>
-                <td>12,2 h</td>
-                <td>23,0 h</td>
-            </tr>
-        </table>
-    </div>
-
-
-    <h2>4. Desigualdade racial</h2>
-
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902"
-        alt="Grupo de pessoas">
-
-
-        <p>
-        A desigualdade também aparece quando observamos a divisão
-        das tarefas por raça e cor. Mulheres pretas e pardas
-        apresentam uma carga maior de trabalho doméstico e cuidados
-        em comparação às mulheres brancas.
-        </p>
-
-
-        <h3>Horas semanais por grupo — Brasil</h3>
-
-
-        <table>
-            <tr>
-                <th>Grupo</th>
-                <th>Horas</th>
-            </tr>
-            <tr>
-                <td>Homens brancos</td>
-                <td>9,5 h</td>
-            </tr>
-            <tr>
-                <td>Homens pretos e pardos</td>
-                <td>9,4 h</td>
-            </tr>
-            <tr>
-                <td>Mulheres brancas</td>
-                <td>18,6 h</td>
-            </tr>
-            <tr>
-                <td>Mulheres pretas e pardas</td>
-                <td>20,4 h</td>
-            </tr>
-        </table>
-    </div>
-
-
-    <h2>5. Principais conclusões</h2>
-
-
-    <div class="card">
-        <p>
-        • Mulheres dedicam mais horas ao trabalho doméstico
-        do que os homens.
-        </p>
-        <p>
-        • A desigualdade está presente nos quatro estados analisados.
-        </p>
-        <p>
-        • Mulheres pretas e pardas enfrentam uma carga maior
-        de trabalho doméstico.
-        </p>
-        <p>
-        • A divisão desigual demonstra a permanência das
-        diferenças sociais e de gênero no Brasil.
-        </p>
-    </div>
-
-
-    <div class="card">
-        <h2>6. Conclusão</h2>
-        <p>
-        Os dados mostram que o trabalho doméstico ainda é distribuído
-        de maneira desigual na sociedade brasileira. As mulheres,
-        especialmente as pretas e pardas, dedicam mais tempo aos
-        cuidados e afazeres domésticos. Por isso, é importante
-        promover uma divisão mais justa dessas responsabilidades,
-        valorizando o trabalho realizado dentro de casa.
-        </p>
-    </div>
-
-
-    <div class="footer">
-        Fonte: IBGE — PNAD Contínua, Outras Formas de Trabalho.
-        <br>
-        Dados de referência: 2022.
-    </div>
-
-
-    </div>
-    """, unsafe_allow_html=True
+    st.caption(
+        "Fonte: IBGE — PNAD Contínua, Outras Formas de Trabalho. "
+        "Dados de referência: 2022."
     )
     
 else:
